@@ -1,4 +1,6 @@
-<div class="flex justify-between items-center mb-5">
+<%= link_to "← Back", root_path, class: "no-underline text-blue-700" %>
+
+<div class="flex justify-between items-center mt-2 mb-5">
   <h1 class="flex items-center mb-0">
     <%= @password.url %>
     <%= link_to @password.url, target: :_blank do %>
@@ -16,8 +18,18 @@
   <pre class="grow my-0"><code><%= @password.username %></code></pre>
   <%= button_tag "Copy", class: "copy-button", data: { controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.username } %>
 </div>
-<h6>Password</h6>
+<h6 class="mt-4">Password</h6>
 <div class="flex gap-1">
   <pre class="grow my-0"><code><%= @password.password %></code></pre>
   <%= button_tag "Copy", class: "copy-button", data: { controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.username } %>
 </div>
+
+<h3>Share</h3>
+<%= link_to "Add a user", new_password_share_path(@password) %>
+
+<% @password.users.excluding(current_user).each do |user| %>
+  <div class="flex justify-between my-1 items-center">
+    <div><%= user.email %></div>
+    <%= button_to "❌ Remove", password_share_path(@password, user), class: "border-solid border-2 border-gray-300 p-1 rounded-md hover:border-red-400", method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+  </div>
+<% end %>
