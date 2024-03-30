@@ -1,15 +1,15 @@
 <%= form_with model: user_password, url: password_shares_path(password) do |form| %>
-  <div>
-    <%= form.label :user_id %>
+  <div class="flex my-2">
+    <%= form.label :user_id , class: "my-auto w-24" %>
     <%= form.collection_select :user_id, password.shareable_users , :id, :email %>
   </div>
 
-  <div>
-    <%= form.label :role %>
+  <div class="flex my-2">
+    <%= form.label :role , class: "my-auto w-24" %>
     <%= form.select :role, UserPassword::ROLES.map{ |r| [r.titleize, r]} %>
   </div>
 
   <div>
-    <%= form.submit "Share" %>
+    <span class="my-buttons hover:bg-gray-400"><%= form.submit "Share" %></span>
   </div>
 <% end %>

@@ -8,24 +8,24 @@
     <% end %>
   <% end %>
 
-  <div>
-    <%= form.label :url %>
+  <div class="flex my-2">
+    <%= form.label :url , class: "my-auto w-24" %>
     <%= form.url_field :url %>
   </div>
 
-  <div>
-    <%= form.label :username %>
+  <div class="flex my-2">
+    <%= form.label :username , class: "my-auto w-24" %>
     <%= form.text_field :username %>
   </div>
 
-  <div>
-    <%= form.label :password %>
+  <div class="flex my-2">
+    <%= form.label :password , class: "my-auto w-24" %>
     <%= form.text_field :password %>
   </div>
 
   <div class="mt-2">
     <span class="my-buttons hover:bg-gray-400"><%= form.submit %></span>
-    <%= button_tag "❌ Delete", form: "delete_password", class: "border-solid border-2 border-gray-300 px-1 rounded-md hover:border-red-400" if @user_password.deletable? %>
+    <%= button_tag "❌ Delete", form: "delete_password", class: "border-solid border-2 border-gray-300 px-1 rounded-md hover:border-red-400" if form.object.persisted? &&current_user_password.deletable? %>
   </div>
 <% end %>
 
