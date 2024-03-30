@@ -23,9 +23,9 @@
     <%= form.text_field :password %>
   </div>
 
-  <div>
-    <%= form.submit %>
-    <%= button_tag "Delete", form: "delete_password" %>
+  <div class="mt-2">
+    <span class="my-buttons hover:bg-gray-400"><%= form.submit %></span>
+    <%= button_tag "❌ Delete", form: "delete_password", class: "border-solid border-2 border-gray-300 px-1 rounded-md hover:border-red-400" if @user_password.deletable? %>
   </div>
 <% end %>
 

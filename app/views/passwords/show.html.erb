@@ -9,7 +9,7 @@
       </svg>
     <% end %>
   </h1>
-  <%= link_to "Edit", edit_password_path, class: "my-buttons" %>
+  <%= link_to "Edit", edit_password_path(@password), class: "my-buttons" if @user_password.editable?%>
 </div>
 
 
@@ -24,12 +24,13 @@
   <%= button_tag "Copy", class: "copy-button", data: { controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.username } %>
 </div>
 
-<h3>Share</h3>
-<%= link_to "Add a user", new_password_share_path(@password) %>
 
-<% @password.users.excluding(current_user).each do |user| %>
-  <div class="flex justify-between my-1 items-center">
-    <div><%= user.email %></div>
-    <%= button_to "❌ Remove", password_share_path(@password, user), class: "border-solid border-2 border-gray-300 p-1 rounded-md hover:border-red-400", method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+<h3>Shared with</h3>
+<% @password.user_passwords.each do |user_password| %>
+  <div class="flex justify-between my-1 items-left">
+    <div><%= user_password.user.email %></div>
+    <div><%= user_password.role.titleize %></div>
+    <%= button_to "❌ Remove", password_share_path(@password, user_password.user), class: "border-solid border-2 border-gray-300 p-1 rounded-md hover:border-red-400", method: :delete, data: {turbo_confirm: "Are you sure?"} if @user_password.shareable? %>
   </div>
 <% end %>
+<%= link_to "Add a user", new_password_share_path(@password) if @user_password.shareable? %>
