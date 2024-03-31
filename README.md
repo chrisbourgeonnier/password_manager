@@ -1,26 +1,28 @@
-# README
+### README
 
-# Work In Progress
+# Work In Progress  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  
+    
+_This README would normally document whatever steps are necessary to get the
+application up and running._
 
-Things you may want to cover:
+_Things you may want to cover:_
 
-* Ruby version
+_* Ruby version_
 
-* System dependencies
+_* System dependencies_
 
-* Configuration
+_* Configuration_
 
-* Database creation
+_* Database creation_
 
-* Database initialization
+_* Database initialization_
 
-* How to run the test suite
+_* How to run the test suite_
 
-* Services (job queues, cache servers, search engines, etc.)
+_* Services (job queues, cache servers, search engines, etc.)_
 
-* Deployment instructions
+_* Deployment instructions_
 
-* ...
+_* ..._
