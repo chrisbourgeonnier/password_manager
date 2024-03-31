@@ -1,6 +1,8 @@
 <div class="flex justify-between items-center mb-5">
-  <h1 class="mb-0">Password Manager</h1>
+  <h1 class="mb-0">My Passwords</h1>
   <%= link_to "New Password", new_password_path, class:"my-buttons" %>
 </div>
 
-<%= render @passwords %>
+<div class="flex flex-col divide-y divide-gray-100">
+  <%= render @passwords %>
+</div>
